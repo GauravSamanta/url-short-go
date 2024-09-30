@@ -8,10 +8,8 @@ services:
         PROD_DB_URL: "host=postgres user=root password=root dbname=url-short port=5432 sslmode=disable TimeZone=Asia/Shanghai"
       ports:
         - 8000:8000
-      develop:
-        watch:
-          - path: .
-            action: rebuild
+      volumes:
+        - ./:/app
   
 
   postgres:

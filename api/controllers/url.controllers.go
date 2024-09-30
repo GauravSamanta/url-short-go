@@ -12,11 +12,12 @@ import (
 )
 
 func ShortenUrl(c *fiber.Ctx) error {
-	// Parse the request body into the clientUrl struct
+
 	clientUrl := types.Url{}
 	err := c.BodyParser(&clientUrl)
+
 	if err != nil {
-		return c.Status(fiber.StatusBadRequest).SendString("Failed to parse request body")
+		return c.Status(fiber.StatusBadRequest).SendString("Failed to parse request body, try again")
 	}
 
 	// Generate a unique short ID

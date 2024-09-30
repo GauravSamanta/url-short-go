@@ -8,6 +8,10 @@ import (
 
 func UrlRoutes(r *fiber.App) {
 	route := r.Group("/api/v1/url")
+
+	//for shortening urls
 	route.Post("/short", controllers.ShortenUrl)
+
+	//for redirecting using short urls
 	route.Get("/:id", controllers.RedirectToUrl)
 }
