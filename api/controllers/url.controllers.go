@@ -53,6 +53,8 @@ func RedirectToUrl(c *fiber.Ctx) error {
 		// If there's a database error, return it
 		return c.Status(fiber.StatusBadRequest).SendString("short url doesnt exist")
 	}
+	url.Clicks += 1
+	config.DB.Save(&url)
 
 	return c.Redirect(url.LongUrl, fiber.StatusPermanentRedirect)
 }
